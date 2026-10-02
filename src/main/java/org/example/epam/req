@@ -1,0 +1,110 @@
+Warehouse Order Processing
+Objective
+
+Implement an order-processing algorithm for a small warehouse. The task assesses your ability to work with conditions, loops, arrays, strings, methods, and simple Java objects.
+
+The model classes and tests are already provided. You only need to implement the processing logic.
+Background
+
+A warehouse stores several products. Orders arrive one by one and must be processed in their original order. A completed order immediately decreases the available stock, so every later order must use the updated quantity.
+Editable file
+
+Modify only:
+
+src/main/java/com/epam/assessment/warehouse/WarehouseOrderProcessor.java
+
+Do not change the signatures or packages of the provided classes.
+Required method
+
+Implement:
+
+public static ProcessingResult processOrders(Product[] products, Order[] orders)
+
+Input assumptions
+
+The assessment data satisfies these preconditions:
+
+    products and orders are not null;
+    neither array contains null elements;
+    every warehouse product code is non-null and unique;
+    every initial product quantity is zero or greater;
+    order IDs do not need to be consecutive;
+    an order product code may be null; it must then be treated as an unknown product.
+
+You do not need to validate the warehouse data itself.
+Business rules
+
+Process every order exactly once and preserve the original order in the returned OrderResult[].
+
+For each order, apply the rules in this exact order:
+
+    If the requested quantity is less than or equal to zero, reject the order with OrderStatus.INVALID_QUANTITY.
+    Otherwise, if the product code is null or is not present in the warehouse, reject the order with OrderStatus.UNKNOWN_PRODUCT.
+    Otherwise, if the available quantity is smaller than the requested quantity, reject the order with OrderStatus.NOT_ENOUGH_STOCK.
+    Otherwise, complete the order with OrderStatus.COMPLETED and subtract the requested quantity from the corresponding Product object.
+
+A rejected order must never change the warehouse stock.
+Processing result
+
+Return a ProcessingResult containing:
+
+    one OrderResult for every input order, in the same order;
+    the number of completed orders;
+    the number of rejected orders;
+    ;the total number of units sold in completed orders
+    the code of the best-selling product.
+
+The best-selling product is determined by the total number of units successfully sold, not by the number of orders.
+
+    Rejected orders do not contribute to sales.
+    If several products have the same highest positive number of sold units, return the lexicographically smallest product code according to String.compareTo.
+    If no units were sold, bestSellingProductCode must be null.
+
+The Product objects supplied in the products array must contain the remaining quantities after processing.
+Examples
+
+Assume the warehouse initially contains PEN: 10 and BOOK: 4.
+Order	Result	Remaining stock
+#101, PEN, 3	COMPLETED	PEN: 7, BOOK: 4
+#102, BOOK, 5	NOT_ENOUGH_STOCK	unchanged
+#103, PEN, 7	COMPLETED	PEN: 0, BOOK: 4
+#104, UNKNOWN, 1	UNKNOWN_PRODUCT	unchanged
+#105, BOOK, 0	INVALID_QUANTITY	unchanged
+
+The summary is:
+
+    completed orders: 2;
+    rejected orders: 3;
+    total units sold: 10;
+    best-selling product: PEN.
+
+Implementation requirements
+
+    Use arrays, loops, conditions, methods, and the provided classes.
+    Decompose the solution into helper methods when it improves readability.
+    Use String.equals to match product codes.
+    Do not use collections, maps, Stream API, or sorting utilities.
+    Do not read from standard input or print the result to the console.
+    Do not add external dependencies.
+
+How to verify your work
+
+Run:
+
+mvn clean test
+
+The tests cover validation priority, sequential stock updates, rejected orders, result ordering, counters, total sales, best-seller selection, ties, empty orders, zero stock, and the required public API surface.
+Expected result
+
+Your implementation is complete when all tests pass and Maven reports BUILD SUCCESS.
+Estimated time
+
+60–90 minutes.
+
+    ATTENTION
+
+    You may read the tests in src/test/java and run them as many times as needed. They are part of the task specification and may clarify expected behavior.
+
+    Modify only the file explicitly listed in the Editable file section. Do not modify tests or pom.xml. During submission, AutoCode uses the original protected versions of the tests and pom.xml, so changes to those files will not affect the final result.
+
+    Submit your solution only when you are ready for it to be evaluated.
