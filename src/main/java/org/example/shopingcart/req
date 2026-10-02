@@ -1,0 +1,5 @@
+---
+implement shopping cart, with f/r add/remove/sum/delete product and represent product (toString product - amount \n same)
+
+no limit in cart |
+entity: Cart and Product
