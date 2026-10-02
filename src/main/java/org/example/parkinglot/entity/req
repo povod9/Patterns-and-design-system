@@ -1,0 +1,20 @@
+1. There is only one parking lot.
+2. Each vehicle has a specific "weight" for calculation purposes.
+3. Smaller vehicles can occupy larger parking spaces (e.g., a motorcycle can park in a medium or large spot if the small ones are full).
+4. The first hour is free; subsequent hours cost 4 PLN per hour.
+
+NFRs:
+1. The system does not support multithreading.
+2. 100 parking spaces.
+
+Move initialization out of `parkingLot` + implement requirement #4.
+
+Convert to a Maven project.
+
+Include a prompt/hint.
+
+06.09
+-----
+Fix bug related to point 3: remove ints, pass a ready-made list directly.
++ Idea regarding the parking ticket.
++ Package naming.
