@@ -1,0 +1,7 @@
+Implement simple delivery order
+
+-------------------------------
+1. We have only 3 types of delivery (Courier, Post and Self-pickup);
+2. Order has limit by weigh depends on delivery type (Courier = 20kg, Post = 10k, Self-pickup = 30kg);
+3. The price is calculated by delivery type (Courier = 4$ + (1kg = 1$), Post = 1kg = 1$, Self-pickup = free);
+4. An order cannot weight less than 1;
