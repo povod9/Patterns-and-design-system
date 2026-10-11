@@ -45,6 +45,9 @@ public final class ParkingLot {
         var toFreeParkingSpot = findTakenParkingSlot(transportNumber);
             toFreeParkingSpot.vacate();
             Duration totalAmountOfHours = timeDurationCounter(toFreeParkingSpot.arrivalTime, toFreeParkingSpot.setOffTime);
+            if (totalAmountOfHours == Duration.ZERO){
+                return "Your car was successfully removed";
+            }
             BigDecimal totalPrice = payForTime(totalAmountOfHours);
             String message = "You were at the parking loot: " + totalAmountOfHours + ", pay before leaving";
             System.out.println(message + "\n You can zoom a card");

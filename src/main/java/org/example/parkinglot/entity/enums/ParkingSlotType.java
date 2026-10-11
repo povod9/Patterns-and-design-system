@@ -9,7 +9,7 @@ public enum ParkingSlotType {
     MEDIUM(List.of(TransportType.MOTORCYCLE,TransportType.CAR)),
     LARGE(List.of(TransportType.MOTORCYCLE, TransportType.CAR, TransportType.TRUCK));
 
-    List<TransportType> supportedTransportTypes;
+    final List<TransportType> supportedTransportTypes;
 
     ParkingSlotType(List<TransportType> supportedTransportTypes) {
         this.supportedTransportTypes = supportedTransportTypes;
