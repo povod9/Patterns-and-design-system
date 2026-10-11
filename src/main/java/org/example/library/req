@@ -1,0 +1,6 @@
+Implement library system
+
+1. User can borrow a book with no limit, but can't borrow the same book twice.
+2. Book has multiple copies.
+3. User will be punished if he doesn't give back the book in time.
+4. User can borrow a book only for a week.
